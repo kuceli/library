@@ -1,1 +1,1 @@
-# libraryapp
+# djangolibrary
