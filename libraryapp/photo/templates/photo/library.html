@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Kuceli's Photo App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body style="background-color:whitesmoke;">
+<nav class="navbar navbar-light" style="background-color:#23272B;">
+    <a href="#" class="navbar-brand" style="color: #FFFFFF; font-family:'Times New Roman', Times, serif; font-size: 30px;">Library App</a>
+    <a class="navbar-link btn-lg" href="{% url 'index' %}" style="background-color:transparent;color:#000000; border:2px solid #FFFFFF; color: #FFFFFF; font-family:'Times New Roman', Times, serif;"> DataFlair</a>
+<a href="{% url 'admin:index' %}" class = 'navbar-link btn-lg' style="background-color:transparent;color:#000000; border:2px solid #FFFFFF; color: #FFFFFF; font-family:'Times New Roman', Times, serif;">Admin</a>
+    <a href="{% url 'upload-photo' %}" class="navbar-link btn-lg" style="background-color:transparent;color:#000000; border:2px solid #FFFFFF; color: #FFFFFF; font-family:'Times New Roman', Times, serif;">Upload Photos</a>
+</nav>
+<br>
+{% block content %}
+<div class="container">
+<div class="card-columns">
+    {% for photo in shelf %}
+    <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{ photo.picture.url }}">
+  <div class="card-body">
+    <h5 class="card-title">{{ photo.name }}</h5>
+    <p class="card-text">{{ photo.describe }}</p>
+   <div class="card-footer bg-transparent border-dark">
+   <p class="card-title">{{photo.photographer}}</p>
+   <center>
+       <a href="update/{{photo.id}}" class="btn btn-light" id = '{{photo.id}}' style="border-color: #23272B;" >edit</a>
+       <a href="delete/{{photo.id}}" class="btn btn-dark" id = '{{photo.id}}'>delete</a>
+    </center>
+    </div>
+  </div>
+</div>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}
+</body>
+</html>

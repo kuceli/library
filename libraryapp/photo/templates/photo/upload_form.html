@@ -1,0 +1,18 @@
+{% extends 'photo/library.html' %}
+{% block content %}
+    <center>
+    <h1 class="display-3">Upload Photo</h1>
+    <form method = 'POST' enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class = 'w-50 table table-light' style="border-radius:10px;background-color:#23272B; color: #FFFFFF;">
+            {% for field in upload_form %}
+            <tr>
+                <th>{{field.label}}</th>
+                <td>{{ field }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <button type="submit" class="btn btn-lg btn-dark">Submit</button>
+    </form>
+    </center>
+{% endblock %}
