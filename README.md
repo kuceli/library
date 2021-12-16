@@ -1,2 +1,1 @@
-# djangolibrary
 # library
